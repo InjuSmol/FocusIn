@@ -13,7 +13,7 @@ const PinSchema = new mongoose.Schema(
         },
         description: {
             type: String,
-            required: true, 
+            require: true, 
             min: 3,
             max: 50
         },
