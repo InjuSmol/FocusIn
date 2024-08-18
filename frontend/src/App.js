@@ -1,29 +1,28 @@
 import { useState } from "react";
 import ReactMapGL, { Marker} from "react-map-gl";
+import AddLocationIcon from '@mui/icons-material/AddLocation';
 
 function App() {
+  const [viewport, setViewport] = useState({
+    latitude: 47.040182,
+    longitude: 17.071727,
+    zoom: 4,
+  });
   return (
     <div className="App">
     <ReactMapGL
+    {...viewport}
       mapboxAccessToken={process.env.REACT_APP_MAPBOX}
-      initialViewState={{
-        longitude: -122.4,
-        latitude: 37.8,
-        zoom: 14
-      }}
-      style={{width: "100vw", height: "100vh"}}
+      onViewportChange={(viewport) => setViewport(viewport)}
       mapStyle="mapbox://styles/mapbox/streets-v9"
       >
       <Marker 
-        longitude={-100} 
-        latitude={40} 
-        anchor="bottom"
-        offsetLeft={-122.41}
-        offsetTop={-10} 
-
+      longitude={48.858093} 
+      latitude={2.294694} 
+      offsetLeft={-20}
+      offsetTop={-10} 
       >
-
-        <img alt="" src="./pin.png" />
+        <AddLocationIcon style={{fontSize:viewport.zoom *10}}/>
       </Marker>
     </ReactMapGL>
     </div>
